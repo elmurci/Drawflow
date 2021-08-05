@@ -1373,9 +1373,11 @@ export default class Drawflow {
     } else {
       if(parseInt(this.render.version) === 3 ) {
         //Vue 3
+        const props = this.noderegister[dataNode.html].props;
+        props["nodeData"] = dataNode;
         let wrapper = this.render.createApp({
           parent: this.parent,
-          render: h => this.render.h(this.noderegister[html].html, this.noderegister[html].props, this.noderegister[html].options)
+          render: h => this.render.h(this.noderegister[dataNode.html].html, props, this.noderegister[dataNode.html].options)
         }).mount(content)
       } else {
         // Vue 2
